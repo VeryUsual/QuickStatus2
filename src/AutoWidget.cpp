@@ -122,10 +122,10 @@ void AutoWidget::updateButtons() {
     std::string active = nt::GetString(activeSub, "");
     std::string defaultSelected = nt::GetString(defaultSub, "");
     std::vector<std::string> options = nt::GetStringArray(optionsSub, std::span<std::string>());
-    std::vector<std::string> buttonOrder[6];
+    std::array<std::vector<std::string>, 6> buttonOrder;
     removeButtons();
     int i = 0;
-    for (std::string option : options) {
+    for (const std::string& option : options) {
         if (option == "None") {
             buttonOrder[0].insert(buttonOrder[0].begin(), option);
             options[i].erase();
@@ -138,8 +138,8 @@ void AutoWidget::updateButtons() {
         else buttonOrder[5].push_back(option);
         i++;
     }
-    for (std::vector<std::string> order : buttonOrder) {
-        for (std::string option : order) {
+    for (const std::vector<std::string>& order : buttonOrder) {
+        for (const auto& option : order) {
             QRadioButton* button = new QRadioButton(QString::fromStdString(option), this);
             if (active == option) button->setChecked(true);
             std::string text = button->text().toStdString();

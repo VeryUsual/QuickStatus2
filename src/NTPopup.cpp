@@ -61,7 +61,7 @@ NTPopup::NTPopup(QWidget* parent, StatusBar* statusBar):QDialog(parent) {
 
     // std::vector<nt::ConnectionInfo> connections = nt::GetConnections(nt::GetDefaultInstance());
     QString initialAddress = settings.value("ntAddress").toString();
-    QString initalTeam = settings.value("ntTeam").toString();
+    //QString initalTeam = settings.value("ntTeam").toString();
     QString initialPort = settings.value("ntPort").toString();
     QString initialType = settings.value("ntType").toString();
     
